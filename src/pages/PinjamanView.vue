@@ -45,6 +45,67 @@
       <v-card class="mb-12">
         <v-card-title class="font-weight-bold">Detail Pinjaman </v-card-title>
         <v-divider />
+        <v-divider />
+        <div>
+          <v-card-title class="font-weight-bold">Informasi</v-card-title>
+          <v-card-text>
+            <v-row>
+              <v-col cols="12" sm="12" md="12">
+                <v-row>
+                  <v-col cols="5" sm="5" md="5">
+                    <p>Nama</p>
+                    <p>Email</p>
+                    <p>Kredit Skor</p>
+                    <p>Rate Interest</p>
+                    <p>Rangking Resiko</p>
+                    <p>Term</p>
+                    <p>Tujuan Pinjaman</p>
+                    <p>Barang Jaminan</p>
+                    <p>Nilai Jaminan</p>
+                    <p>Tipe Dokumen</p>
+                    <p>Dokumen</p>
+                  </v-col>
+                  <v-col cols="7" sm="7" md="7">
+                    <p>
+                      <strong>: {{ detailsData?.borrower?.name || "-" }}</strong>
+                    </p>
+                    <p>
+                      <strong>: {{ detailsData?.borrower?.email || "-" }}</strong>
+                    </p>
+                    <p>
+                      <strong>: {{ detailsData?.borrower?.creditScore || "-" }}</strong>
+                    </p>
+                    <p>
+                      <strong>: {{ detailsData?.interestRate || "-" }}</strong>
+                    </p>
+                    <p>
+                      <strong>: {{ detailsData?.riskRating || "-" }}</strong>
+                    </p>
+                    <p>
+                      <strong>: {{ detailsData?.term || "-" }}</strong>
+                    </p>
+                    <p>
+                      <strong>: {{ detailsData?.purpose || "-" }}</strong>
+                    </p>
+                    <p>
+                      <strong>: {{ detailsData?.collateral?.type || "-" }}</strong>
+                    </p>
+                    <p>
+                      <strong>: {{ detailsData?.collateral?.value || "-" }}</strong>
+                    </p>
+                    <p>
+                      <strong>: {{ detailsData?.documents[0]?.type || "-" }}</strong>
+                    </p>
+                    <p>
+                      <strong>: {{ detailsData?.documents[0]?.url || "-" }}</strong>
+                    </p>
+                  </v-col>
+                </v-row>
+              </v-col>
+            </v-row>
+          </v-card-text>
+        </div>
+
         <v-card-actions class="d-flex justify-end">
           <div class="my-4">
             <v-btn
@@ -59,7 +120,6 @@
         </v-card-actions>
       </v-card>
     </section>
-    <confirmation-dialog-promise ref="confDialog" />
   </section>
 </template>
 
@@ -92,6 +152,8 @@ export default class Pinjaman extends Vue {
   showData = true
   showDetail = false
   datas = []
+  creditInfo = []
+  detailsData = ''
 
   async getListPinjaman () {
     try {
@@ -143,7 +205,10 @@ export default class Pinjaman extends Vue {
     }
   }
 
-  details () {
+  details (item: any) {
+    console.log(item, 'items')
+
+    this.detailsData = item
     this.showData = false
     this.showDetail = true
   }
