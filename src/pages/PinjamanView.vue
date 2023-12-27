@@ -205,9 +205,7 @@ export default class Pinjaman extends Vue {
     }
   }
 
-  details (item: any) {
-    console.log(item, 'items')
-
+  details (item) {
     this.detailsData = item
     this.showData = false
     this.showDetail = true
