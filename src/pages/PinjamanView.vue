@@ -205,7 +205,8 @@ export default class Pinjaman extends Vue {
     }
   }
 
-  details (item) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  details (item: any) {
     this.detailsData = item
     this.showData = false
     this.showDetail = true
