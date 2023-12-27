@@ -83,10 +83,6 @@ export default class Navigation extends Vue {
     return UserModule.menuList
   }
 
-  get accessTokenDetail () {
-    return UserModule.accessTokenDetail
-  }
-
   logout () {
     UserModule.Logout()
     router.push({ name: 'Login' })
